@@ -9,7 +9,8 @@ import SwiftUI
 
 struct InfoView: View {
     let action: () -> ()
-    let type: InformationType
+    let type: ErrorType
+    
     var body: some View {
         HStack {
             HStack(alignment: .center, spacing: 16) {
@@ -38,14 +39,14 @@ struct InfoView: View {
     }
 }
 
-enum InformationType {
+enum ErrorType {
     case noData
     case error
     
     var color: Color {
         switch self {
         case .noData:
-            return Color(uiColor: UIColor(red: 0.19, green: 0.18, blue: 0.11, alpha: 1.00))
+            return Color(uiColor: UIColor(red: 0.28, green: 0.33, blue: 0.37, alpha: 1.00))
         case .error:
             return .red
         }

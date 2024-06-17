@@ -10,7 +10,7 @@ import Services
 
 final class BooksFetcher {
     @Published private(set) var booksResult: [Book] = []
-    @Published private(set) var fetchingError: FetchingError? = nil
+    @Published private(set) var fetchingError: ErrorType? = nil
     private(set) var books: [Book] = []
     private let service: ServiceManaging
     private let listId: Int
@@ -53,7 +53,7 @@ final class BooksFetcher {
                 }
             case .failure:
                 DispatchQueue.main.async {
-                    self?.fetchingError = .failedFetching
+                    self?.fetchingError = .error
                 }
             }
             completion()
@@ -82,7 +82,7 @@ final class BooksFetcher {
                 }
             case .failure:
                 DispatchQueue.main.async {
-                    self?.fetchingError = .failedFetching
+                    self?.fetchingError = .error
                 }
             }
             completion()

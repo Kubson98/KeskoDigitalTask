@@ -10,7 +10,7 @@ import Services
 
 class ListsViewModel: ObservableObject {
     @Published private(set) var lists: [List] = []
-    @Published private(set) var fetchingError: FetchingError? = nil
+    @Published private(set) var fetchingError: ErrorType? = nil
     private let service: ServiceManaging
     private let coordinator: Coordinating
     private let listsFetcher: AllListsFetcher
@@ -35,9 +35,4 @@ class ListsViewModel: ObservableObject {
     func updateLists() {
         listsFetcher.updateLists()
     }
-}
-
-enum FetchingError: Error {
-    case failedFetching
-    case noData
 }

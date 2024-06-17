@@ -9,8 +9,8 @@ import Foundation
 import Services
 
 final class BookDetailsFetcher {
-    @Published private(set) var details: BookDetails?
-    @Published private(set) var fetchingError: FetchingError? = nil
+    @Published private(set) var details: BookDetails = .init()
+    @Published private(set) var fetchingError: ErrorType? = nil
     private let service: ServiceManaging
     private let bookId: Int
     
@@ -28,7 +28,7 @@ final class BookDetailsFetcher {
                 }
             case .failure:
                 DispatchQueue.main.async {
-                    self?.fetchingError = .failedFetching
+                    self?.fetchingError = .error
                 }
             }
         })

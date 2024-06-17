@@ -10,7 +10,7 @@ import Services
 
 final class AllListsFetcher {
     @Published private(set) var listPreviews: [List] = []
-    @Published private(set) var fetchingError: FetchingError? = nil
+    @Published private(set) var fetchingError: ErrorType? = nil
     private var lists: [List] = []
     private var books: [Book] = []
     private let service: ServiceManaging
@@ -66,7 +66,7 @@ final class AllListsFetcher {
                 }
             case .failure:
                 DispatchQueue.main.async {
-                    self?.fetchingError = .failedFetching
+                    self?.fetchingError = .error
                 }
             }
         })
@@ -85,7 +85,7 @@ final class AllListsFetcher {
                 }
             case .failure:
                 DispatchQueue.main.async {
-                    self?.fetchingError = .failedFetching
+                    self?.fetchingError = .error
                 }
             }
         })

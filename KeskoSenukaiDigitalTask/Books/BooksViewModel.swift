@@ -10,7 +10,7 @@ import Services
 
 class BooksViewModel: ObservableObject {
     @Published private(set) var booksResult: [Book] = []
-    @Published private(set) var fetchingError: FetchingError? = nil
+    @Published private(set) var fetchingError: ErrorType? = nil
     private let service: ServiceManaging
     private let coordinator: Coordinating
     private let booksFetcher: BooksFetcher
